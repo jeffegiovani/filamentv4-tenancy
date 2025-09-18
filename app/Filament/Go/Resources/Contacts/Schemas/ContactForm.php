@@ -77,7 +77,7 @@ class ContactForm
                                     ->icon(Phosphor::UsersFour)
                                     ->columnSpanFull()
                                     ->schema([
-                                        Text::make('As opções são pré-definidas pela Go Imobil para que os relatórios sejam consistentes e assertivos, entre em contato para sugerir novas opções'),
+                                        Text::make('As opções são pré-definidas pela empresa para que os relatórios sejam consistentes e assertivos, entre em contato para sugerir novas opções'),
 
                                         Select::make('categories')
                                             ->relationship(name: 'categories', titleAttribute: 'title')
