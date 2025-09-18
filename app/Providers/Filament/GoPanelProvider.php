@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Models\RealEstate;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,6 +32,11 @@ class GoPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Purple,
             ])
+            ->tenant(
+                model: RealEstate::class,
+                slugAttribute: 'slug',
+                ownershipRelationship: 'realEstate',
+            )
             ->discoverResources(in: app_path('Filament/Go/Resources'), for: 'App\Filament\Go\Resources')
             ->discoverPages(in: app_path('Filament/Go/Pages'), for: 'App\Filament\Go\Pages')
             ->pages([
