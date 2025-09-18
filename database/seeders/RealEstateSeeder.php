@@ -76,9 +76,6 @@ class RealEstateSeeder extends Seeder
 
         for ($i = 0; $i <= $totalRowsForIterate; $i++) {
             RealEstateFactory::new()
-                ->setParams([
-                    'totalCities' => $totalCities,
-                ])
                 ->create();
         }
     }
