@@ -25,6 +25,7 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
     protected static ?string $slug = 'contatos';
+    protected static ?string $tenantOwnershipRelationshipName = 'realEstate';
 
     /**
      * NAVIGATION THINGS

@@ -7,6 +7,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Http\Middleware\IdentifyTenant;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -35,7 +36,7 @@ class GoPanelProvider extends PanelProvider
             ->tenant(
                 model: RealEstate::class,
                 slugAttribute: 'slug',
-                ownershipRelationship: 'realEstate',
+                ownershipRelationship: 'realEstates',
             )
             ->discoverResources(in: app_path('Filament/Go/Resources'), for: 'App\Filament\Go\Resources')
             ->discoverPages(in: app_path('Filament/Go/Pages'), for: 'App\Filament\Go\Pages')
@@ -57,7 +58,11 @@ class GoPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                IdentifyTenant::class,
             ])
+            ->tenantMiddleware([
+                IdentifyTenant::class,
+            ], isPersistent: true)
             ->authMiddleware([
                 Authenticate::class,
             ]);

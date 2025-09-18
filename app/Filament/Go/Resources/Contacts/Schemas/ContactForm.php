@@ -53,8 +53,6 @@ class ContactForm
 
                                 EmailsRepeater::make(),
 
-                                DocumentsRepeater::make(),
-
                                 UrlsRepeater::make(),
                             ]),
 
@@ -77,7 +75,7 @@ class ContactForm
                                     ->icon(Phosphor::UsersFour)
                                     ->columnSpanFull()
                                     ->schema([
-                                        Text::make('As opções são pré-definidas pela empresa para que os relatórios sejam consistentes e assertivos, entre em contato para sugerir novas opções'),
+                                        Text::make('Opções pré-definidas'),
 
                                         Select::make('categories')
                                             ->relationship(name: 'categories', titleAttribute: 'title')

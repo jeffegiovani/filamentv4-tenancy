@@ -71,8 +71,8 @@ class RealEstateSeeder extends Seeder
             ->sync([1]);
 
         // Randomic Items
-        $totalRowsForIterate = config('site.fake.real_estates') ?? 10;
-        $totalCities = RealEstate::count('id');
+        $totalRowsForIterate = config('options.fake.real_estates') ?? 10;
+        $total = RealEstate::count('id');
 
         for ($i = 0; $i <= $totalRowsForIterate; $i++) {
             RealEstateFactory::new()

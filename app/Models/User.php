@@ -53,19 +53,19 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         ];
     }
 
-    public function realEstate(): BelongsToMany
+    public function realEstates(): BelongsToMany
     {
         return $this->belongsToMany(RealEstate::class, 'real_estate_has_user', 'user_id', 'real_estate_id');
     }
 
     public function getTenants(Panel $panel): Collection
     {
-        return $this->realEstate;
+        return $this->realEstates;
     }
 
     public function canAccessTenant(Model $tenant): bool
     {
-        return $this->realEstate()->whereKey($tenant)->exists();
+        return $this->realEstates()->whereKey($tenant)->exists();
     }
 
     public function canAccessPanel(Panel $panel): bool
