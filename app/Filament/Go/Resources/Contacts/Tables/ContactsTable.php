@@ -9,6 +9,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,7 +38,11 @@ class ContactsTable
                     ]);
             })
             ->defaultSort('name', 'ASC')
-            ->columns(AllTableColumns::make())
+            ->columns([
+                //...AllTableColumns::make(),
+                TextColumn::make('utm_source_id')
+                    ->action(fn($record) => dd('Test'))
+            ])
             ->filters([
                 TrashedFilter::make(),
             ])
